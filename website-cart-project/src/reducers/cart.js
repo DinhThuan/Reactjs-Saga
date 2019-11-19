@@ -1,39 +1,31 @@
-import * as types from "../constants/ActionType";
+import * as Types from "../constants/ActionType";
 const data = JSON.parse(localStorage.getItem("CART"));
-const initialState = data
-   ? data
-   : [
-        {
-           product: {
-              id: 1,
-              name: "Iphone 11",
-              image:
-                 "https://vinhphatmobile.com/wp-content/uploads/2019/09/iPhone-11.jpg",
-              description: "The product was manufactured in 2010",
-              price: 1000,
-              inventory: 10,
-              rating: 4
-           },
-           quantity: 5
-        },
-        {
-           product: {
-              id: 2,
-              name: "Samsung A20",
-              image:
-                 "https://cdn.tgdd.vn/Products/Images/42/198792/samsung-galaxy-a20-red-400x460.png",
-              description: "The product was manufactured in 2011",
-              price: 1000,
-              inventory: 5,
-              rating: 3
-           },
-           quantity: 3
-        }
-     ];
+const initialState = data ? data : [];
+const findProductInCart = (carts, product) => {
+   if (carts.length > 0) {
+      for (let i = 0; i < carts.length; i++) {
+         if (carts[i].product.id === product.id) {
+            return i;
+         }
+      }
+   }
+   return -1;
+};
 
 const cart = (state = initialState, action) => {
    switch (action.type) {
-      case types.ADD_TO_CART:
+      case Types.ADD_TO_CART:
+         let { product, quantity } = action;
+         let index = findProductInCart(state, product);
+         if (index !== -1) {
+            state[index].quantity += quantity;
+         } else {
+            state.push({
+               product,
+               quantity
+            });
+         }
+         localStorage.setItem("CART", JSON.stringify(state));
          return [...state];
       default:
          return state;

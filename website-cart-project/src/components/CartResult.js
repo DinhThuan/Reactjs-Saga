@@ -13,7 +13,7 @@ class CartResult extends React.Component {
    }
    render() {
       let { cart } = this.props;
-      console.log(cart);
+      // console.log(cart);
       return (
          <tr>
             <td colSpan="3"></td>
