@@ -334,7 +334,7 @@ class Header extends React.Component {
                <div className="breadcrumb-dn mr-auto">
                   <ol className="breadcrumb header-breadcrumb">
                      <li className="breadcrumb-item">
-                        <a href=".">Trang Chủ</a>
+                        <a href=".">Home</a>
                      </li>
                   </ol>
                </div>
@@ -349,7 +349,7 @@ class Header extends React.Component {
                         aria-haspopup="true"
                         aria-expanded="false"
                      >
-                        <i className="fa fa-user"></i> Tài Khoản
+                        <i className="fa fa-user"></i> Account
                      </a>
                      <div
                         className="dropdown-menu dropdown-menu-right"
@@ -359,19 +359,19 @@ class Header extends React.Component {
                            href="."
                            className="dropdown-item waves-effect waves-light"
                         >
-                           Đăng Ký
+                           Registration
                         </a>
                         <a
                            href="."
                            className="dropdown-item waves-effect waves-light"
                         >
-                           Đăng Nhập
+                           LogIn
                         </a>
                         <a
                            href="."
                            className="dropdown-item waves-effect waves-light"
                         >
-                           Đăng Xuất
+                           LogOut
                         </a>
                      </div>
                   </li>
