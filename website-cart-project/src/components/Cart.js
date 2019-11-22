@@ -2,6 +2,9 @@ import React from "react";
 
 class Cart extends React.Component {
    render() {
+      console.log('github');
+      console.log('github 2');
+      console.log('github 3');
       return (
          <section className="section">
             <div className="table-responsive">
