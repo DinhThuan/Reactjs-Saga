@@ -5,12 +5,38 @@ import Cart from "../components/Cart";
 import CartItem from "../components/CartItem";
 import * as Message from "../constants/Message";
 import CartResult from "../components/CartResult";
+import {
+   actRemoveCart,
+   actChangeMessage,
+   actIncreaseCart,
+   actDecreaseCart
+} from "./../actions/index";
+const messageStyle = {
+   color: "red"
+};
 class CartContainer extends React.Component {
    showCarts(cart) {
-      let result = Message.MSG_CART_EMPTY;
+      let result = (
+         <tr className="text-center">
+            <td colSpan={6}>
+               <h4>
+                  <strong style={messageStyle}>{Message.MSG_CART_EMPTY}</strong>
+               </h4>
+            </td>
+         </tr>
+      );
       if (cart.length > 0) {
          result = cart.map((item, index) => {
-            return <CartItem item={item} key={index}></CartItem>;
+            return (
+               <CartItem
+                  item={item}
+                  key={index}
+                  onDeleteCart={this.props.onDeleteCart}
+                  onChangeMessage={this.props.onChangeMessage}
+                  onIncreaseCart={this.props.onIncreaseCart}
+                  onDecreaseCart={this.props.onDecreaseCart}
+               ></CartItem>
+            );
          });
       }
       return result;
@@ -57,7 +83,20 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-   return {};
+   return {
+      onDeleteCart: cart => {
+         dispatch(actRemoveCart(cart));
+      },
+      onChangeMessage: message => {
+         dispatch(actChangeMessage(message));
+      },
+      onIncreaseCart: product => {
+         dispatch(actIncreaseCart(product));
+      },
+      onDecreaseCart: product => {
+         dispatch(actDecreaseCart(product));
+      }
+   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

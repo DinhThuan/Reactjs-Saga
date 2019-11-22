@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import * as Message from '../constants/Message';
 
 class Product extends React.Component {
    showRating(product) {
@@ -14,6 +14,7 @@ class Product extends React.Component {
    }
    onAddToCart = product => {
       this.props.onAddToCart(product);
+      this.props.onChangeMessage(Message.MSG_ADD_TO_CARD_SUCCESS);
    };
    render() {
       let { product } = this.props;

@@ -19,7 +19,7 @@ class CartResult extends React.Component {
             <td colSpan="3"></td>
             <td>
                <h4>
-                  <strong>Tổng Tiền</strong>
+                  <strong>Total money</strong>
                </h4>
             </td>
             <td>
